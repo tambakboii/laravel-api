@@ -31,9 +31,7 @@ class BukuController extends Controller
         $dataBuku = new Buku;
 
         $rules = [
-            'judul'=>'required',
-            'pengarang'=>'required',
-            'tanggal_publikasi' => 'required'
+            'judul'&&'pengarang'&&'tanggal_publikasi'=> 'required'
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
