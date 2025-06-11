@@ -121,6 +121,21 @@ class BukuController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $dataBuku = Buku::find($id);
+        if(empty($dataBuku)) {
+            return response()->json([
+                'status'=>false,
+                'message'=>'Data Tidak Ditemukan',
+                
+            ], 404);
+        }
+
+
+        $post = $dataBuku -> delete();
+
+        return response()->json([
+            'status'=>true,
+            'message'=> 'sukses delete data'
+        ]);
     }
 }
